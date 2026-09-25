@@ -1,142 +1,111 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" width="1000" height="380">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#140d08"/>
-      <stop offset="1" stop-color="#0b0806"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fff1b8"/>
-      <stop offset="0.5" stop-color="#ffc24a"/>
-      <stop offset="1" stop-color="#b8661a"/>
-    </linearGradient>
-    <linearGradient id="fire" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#b8420a"/>
-      <stop offset="0.6" stop-color="#ff8a1f"/>
-      <stop offset="1" stop-color="#ffd27a"/>
-    </linearGradient>
-    <linearGradient id="ice" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#0a6b5c"/>
-      <stop offset="1" stop-color="#00ffc6"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#fff" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <clipPath id="bars">
-      <rect x="560" y="0" width="360" height="380"/>
-    </clipPath>
-  </defs>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
   <style>
-    .h    { font: 700 22px Georgia, 'Times New Roman', serif; letter-spacing: 4px; }
-    .lbl  { font: 600 12px 'Fira Code', 'Courier New', monospace; letter-spacing: 2px; fill: #c9a877; }
-    .val  { font: 600 16px 'Fira Code', 'Courier New', monospace; fill: #f3e6cf; }
-    .attr { font: 700 13px 'Fira Code', 'Courier New', monospace; letter-spacing: 1.5px; fill: #ffc24a; }
-    .desc { font: 500 12px 'Fira Code', 'Courier New', monospace; fill: #a8957a; }
-    .num  { font: 700 13px 'Fira Code', 'Courier New', monospace; fill: #f3e6cf; }
+    .t   { font-family: 'JetBrains Mono','Fira Code','DejaVu Sans Mono','Courier New',monospace; font-size: 14px; fill: #c9d1d9; }
+    .dim { fill: #6e7681; }
+    .k   { fill: #f0a24a; font-weight: 700; }
+    .acc { fill: #00d4aa; }
+    .art { fill: #f0a24a; font-size: 13px; white-space: pre; }
+    .hot { fill: #ff6a00; }
 
-    .fill { transform-box: fill-box; transform-origin: left center; transform: scaleX(0);
-            animation: grow 1.6s cubic-bezier(.2,.8,.2,1) forwards; }
-    @keyframes grow { to { transform: scaleX(1) } }
+    .ln  { opacity: 0; animation: in .2s ease-out forwards; }
+    @keyframes in { to { opacity: 1 } }
 
-    .shine { animation: shine 3.5s ease-in-out infinite; }
-    @keyframes shine { 0% { transform: translateX(-120px) } 60%,100% { transform: translateX(420px) } }
+    .type { animation: type 1s steps(9,end) .3s forwards; }
+    @keyframes type { to { transform: translateX(110px) } }
 
-    .xp { transform-box: fill-box; transform-origin: left center; animation: xp 6s ease-in-out infinite; }
-    @keyframes xp { 0% { transform: scaleX(.05) } 70% { transform: scaleX(.87) } 100% { transform: scaleX(.87) } }
-
-    .blink { animation: blink 1.2s steps(2) infinite; }
+    .cursor { animation: blink 1s steps(1,end) infinite; }
     @keyframes blink { 50% { opacity: 0 } }
 
-    .pulse { animation: pulse 2.6s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: .55 } 50% { opacity: 1 } }
+    .glow { animation: glow 2.4s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { fill: #b8420a } 50% { fill: #ffb347 } }
+
+    .bar { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); animation: grow 1.2s steps(20,end) forwards; }
+    @keyframes grow { to { transform: scaleX(1) } }
   </style>
 
-  <rect width="1000" height="380" rx="14" fill="url(#bg)"/>
-  <rect x="10" y="10" width="980" height="360" rx="10" fill="none" stroke="#b8661a" stroke-opacity="0.5"/>
-  <!-- cantos ornamentados -->
-  <g stroke="url(#gold)" stroke-width="3" fill="none">
-    <path d="M10 50 V10 H50"/><path d="M950 10 H990 V50"/>
-    <path d="M10 330 V370 H50"/><path d="M950 370 H990 V330"/>
+  <!-- janela -->
+  <rect x="0.5" y="0.5" width="999" height="419" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <path d="M0.5 36 V8.5 a8 8 0 0 1 8 -8 H991.5 a8 8 0 0 1 8 8 V36 Z" fill="#161b22"/>
+  <line x1="0" y1="36" x2="1000" y2="36" stroke="#30363d"/>
+  <circle cx="22" cy="18" r="6" fill="#ff5f57"/><circle cx="42" cy="18" r="6" fill="#febc2e"/><circle cx="62" cy="18" r="6" fill="#28c840"/>
+  <text x="500" y="23" text-anchor="middle" class="t dim" font-size="12">adam@forge: ~</text>
+
+  <!-- prompt -->
+  <text x="28" y="70" class="t"><tspan class="acc">adam@forge</tspan><tspan class="dim">:</tspan><tspan fill="#58a6ff">~</tspan><tspan class="dim">$ </tspan>neofetch</text>
+  <rect x="140" y="52" width="110" height="24" fill="#0d1117" class="type"/>
+
+  <!-- arte ASCII: bigorna -->
+  <g class="ln" style="animation-delay:1.4s">
+    <text class="t art" x="36" y="130" xml:space="preserve"><tspan class="glow">            ▄▄▄▄▄▄▄▄▄▄</tspan></text>
+    <text class="t art" x="36" y="148" xml:space="preserve"> ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</text>
+    <text class="t art" x="36" y="166" xml:space="preserve">▀▀▀▀▀▀███████████████████████</text>
+    <text class="t art" x="36" y="184" xml:space="preserve">        ▀▀▀███████████████▀▀</text>
+    <text class="t art" x="36" y="202" xml:space="preserve">             ██████████</text>
+    <text class="t art" x="36" y="220" xml:space="preserve">             ██████████</text>
+    <text class="t art" x="36" y="238" xml:space="preserve">          ▄████████████████▄</text>
+    <text class="t art" x="36" y="256" xml:space="preserve">          ██████████████████</text>
+    <text class="t art dim" x="40" y="296" xml:space="preserve">     ── forjando desde o boot ──</text>
   </g>
 
-  <!-- cabeçalho -->
-  <text x="40" y="54" class="h" fill="url(#gold)">FICHA DO PERSONAGEM</text>
-  <text x="960" y="54" class="desc" text-anchor="end" fill="#00ffc6"><tspan fill="#00ffc6">&gt; character_sheet.exe</tspan><tspan class="blink" fill="#00ffc6">_</tspan></text>
-  <path d="M40 70 H960" stroke="#b8661a" stroke-opacity="0.4"/>
-
-  <!-- coluna esquerda: identidade -->
+  <!-- informações -->
   <g>
-    <text x="40" y="108" class="lbl">CLASSE</text>
-    <text x="40" y="130" class="val">Forjador Full Stack</text>
-
-    <text x="40" y="168" class="lbl">GUILDA</text>
-    <text x="40" y="190" class="val">Estudante de Ciência da Computação</text>
-
-    <text x="40" y="228" class="lbl">BASE DE OPERAÇÕES</text>
-    <text x="40" y="250" class="val">Boa Vista, RR · Brasil</text>
-
-    <text x="40" y="288" class="lbl">ALINHAMENTO</text>
-    <text x="40" y="310" class="val">Caótico Organizado</text>
+    <text x="330" y="112" class="t ln" style="animation-delay:1.5s"><tspan class="acc" font-weight="700">adam</tspan><tspan class="dim">@</tspan><tspan class="acc" font-weight="700">forge</tspan></text>
+    <text x="330" y="130" class="t dim ln" style="animation-delay:1.55s">─────────────────────────</text>
+    <text x="330" y="154" class="t ln" style="animation-delay:1.6s"><tspan class="k">Role</tspan><tspan class="dim">:      </tspan>Full Stack Developer</text>
+    <text x="330" y="176" class="t ln" style="animation-delay:1.7s"><tspan class="k">Uptime</tspan><tspan class="dim">:    </tspan>22 anos</text>
+    <text x="330" y="198" class="t ln" style="animation-delay:1.8s"><tspan class="k">Host</tspan><tspan class="dim">:      </tspan>Boa Vista, RR · Brasil</text>
+    <text x="330" y="220" class="t ln" style="animation-delay:1.9s"><tspan class="k">Kernel</tspan><tspan class="dim">:    </tspan>Ciência da Computação</text>
+    <text x="330" y="242" class="t ln" style="animation-delay:2.0s"><tspan class="k">Languages</tspan><tspan class="dim">: </tspan>Go · TypeScript · C# · Python</text>
+    <text x="330" y="264" class="t ln" style="animation-delay:2.1s"><tspan class="k">Backend</tspan><tspan class="dim">:   </tspan>Gin · GORM · REST · Keycloak</text>
+    <text x="330" y="286" class="t ln" style="animation-delay:2.2s"><tspan class="k">Frontend</tspan><tspan class="dim">:  </tspan>Next.js · React · Tailwind</text>
+    <text x="330" y="308" class="t ln" style="animation-delay:2.3s"><tspan class="k">Data</tspan><tspan class="dim">:      </tspan>PostgreSQL · Supabase · Firestore</text>
+    <text x="330" y="330" class="t ln" style="animation-delay:2.4s"><tspan class="k">Infra</tspan><tspan class="dim">:     </tspan>Docker · Cloud Run · Vercel · Linux</text>
+    <text x="330" y="352" class="t ln" style="animation-delay:2.5s"><tspan class="k">Focus</tspan><tspan class="dim">:     </tspan>APIs · automação · scraping</text>
   </g>
 
-  <!-- nível / xp -->
-  <g>
-    <circle cx="440" cy="150" r="50" fill="none" stroke="#b8661a" stroke-opacity="0.35" stroke-width="2"/>
-    <circle cx="440" cy="150" r="42" fill="#1c1109" stroke="url(#gold)" stroke-width="3"/>
-    <circle cx="440" cy="150" r="50" fill="none" stroke="#00ffc6" stroke-width="2" stroke-dasharray="20 12" class="pulse">
-      <animateTransform attributeName="transform" type="rotate" from="0 440 150" to="360 440 150" dur="18s" repeatCount="indefinite"/>
-    </circle>
-    <text x="440" y="140" text-anchor="middle" class="lbl">NÍVEL</text>
-    <text x="440" y="170" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="30" fill="url(#gold)">21</text>
-
-    <text x="370" y="238" class="lbl">XP</text>
-    <rect x="370" y="248" width="140" height="10" rx="5" fill="#2a1c10"/>
-    <rect x="370" y="248" width="140" height="10" rx="5" fill="url(#ice)" class="xp" filter="url(#glow)"/>
-    <text x="370" y="282" class="desc">próximo nível: em forja</text>
-
-    <text x="370" y="316" class="lbl">HP <tspan fill="#ff8a1f">♥♥♥♥♥</tspan>  MP <tspan fill="#00ffc6">◆◆◆◆◇</tspan></text>
+  <!-- paleta -->
+  <g class="ln" style="animation-delay:2.7s">
+    <rect x="330" y="368" width="26" height="14" fill="#0d1117" stroke="#30363d"/>
+    <rect x="356" y="368" width="26" height="14" fill="#ff5f57"/>
+    <rect x="382" y="368" width="26" height="14" fill="#3fb950"/>
+    <rect x="408" y="368" width="26" height="14" fill="#f0a24a"/>
+    <rect x="434" y="368" width="26" height="14" fill="#58a6ff"/>
+    <rect x="460" y="368" width="26" height="14" fill="#bc8cff"/>
+    <rect x="486" y="368" width="26" height="14" fill="#00d4aa"/>
+    <rect x="512" y="368" width="26" height="14" fill="#c9d1d9"/>
   </g>
 
-  <!-- atributos -->
-  <g>
-    <text x="560" y="108" class="attr">FOR</text><text x="610" y="108" class="desc">Backend · Go · Gin · GORM</text>
-    <text x="960" y="108" class="num" text-anchor="end">90</text>
-    <rect x="560" y="116" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="116" width="360" height="8" rx="4" fill="url(#fire)" class="fill" style="animation-delay:.1s"/>
+  <!-- proficiência -->
+  <g class="t" font-size="13">
+    <text x="720" y="112" class="ln" style="animation-delay:2.8s"><tspan class="dim"># proficiência</tspan></text>
 
-    <text x="560" y="150" class="attr">DES</text><text x="610" y="150" class="desc">Frontend · Next.js · React · TS</text>
-    <text x="960" y="150" class="num" text-anchor="end">85</text>
-    <rect x="560" y="158" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="158" width="340" height="8" rx="4" fill="url(#fire)" class="fill" style="animation-delay:.3s"/>
-
-    <text x="560" y="192" class="attr">INT</text><text x="610" y="192" class="desc">Dados · PostgreSQL · Supabase · Firestore</text>
-    <text x="960" y="192" class="num" text-anchor="end">80</text>
-    <rect x="560" y="200" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="200" width="320" height="8" rx="4" fill="url(#fire)" class="fill" style="animation-delay:.5s"/>
-
-    <text x="560" y="234" class="attr">SAB</text><text x="610" y="234" class="desc">Arquitetura · Auth · Keycloak</text>
-    <text x="960" y="234" class="num" text-anchor="end">78</text>
-    <rect x="560" y="242" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="242" width="312" height="8" rx="4" fill="url(#ice)" class="fill" style="animation-delay:.7s"/>
-
-    <text x="560" y="276" class="attr">CON</text><text x="610" y="276" class="desc">DevOps · Docker · Cloud Run · Vercel</text>
-    <text x="960" y="276" class="num" text-anchor="end">72</text>
-    <rect x="560" y="284" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="284" width="288" height="8" rx="4" fill="url(#ice)" class="fill" style="animation-delay:.9s"/>
-
-    <text x="560" y="318" class="attr">CAR</text><text x="610" y="318" class="desc">Chambaril lendário · +50% regen de HP</text>
-    <text x="960" y="318" class="num" text-anchor="end">99</text>
-    <rect x="560" y="326" width="400" height="8" rx="4" fill="#2a1c10"/>
-    <rect x="560" y="326" width="396" height="8" rx="4" fill="url(#gold)" class="fill" style="animation-delay:1.1s"/>
-
-    <g clip-path="url(#bars)">
-      <rect x="560" y="110" width="80" height="230" fill="url(#shine)" opacity="0.25" class="shine"/>
+    <g class="ln" style="animation-delay:2.9s">
+      <text x="720" y="142">go</text><text x="960" y="142" text-anchor="end" class="dim">90%</text>
+      <rect x="720" y="150" width="240" height="6" fill="#21262d"/>
+      <rect x="720" y="150" width="216" height="6" fill="#00d4aa" class="bar" style="animation-delay:2.9s"/>
+    </g>
+    <g class="ln" style="animation-delay:3.0s">
+      <text x="720" y="184">typescript</text><text x="960" y="184" text-anchor="end" class="dim">85%</text>
+      <rect x="720" y="192" width="240" height="6" fill="#21262d"/>
+      <rect x="720" y="192" width="204" height="6" fill="#58a6ff" class="bar" style="animation-delay:3.0s"/>
+    </g>
+    <g class="ln" style="animation-delay:3.1s">
+      <text x="720" y="226">sql / modelagem</text><text x="960" y="226" text-anchor="end" class="dim">80%</text>
+      <rect x="720" y="234" width="240" height="6" fill="#21262d"/>
+      <rect x="720" y="234" width="192" height="6" fill="#bc8cff" class="bar" style="animation-delay:3.1s"/>
+    </g>
+    <g class="ln" style="animation-delay:3.2s">
+      <text x="720" y="268">arquitetura</text><text x="960" y="268" text-anchor="end" class="dim">78%</text>
+      <rect x="720" y="276" width="240" height="6" fill="#21262d"/>
+      <rect x="720" y="276" width="187" height="6" fill="#f0a24a" class="bar" style="animation-delay:3.2s"/>
+    </g>
+    <g class="ln" style="animation-delay:3.3s">
+      <text x="720" y="310">devops</text><text x="960" y="310" text-anchor="end" class="dim">72%</text>
+      <rect x="720" y="318" width="240" height="6" fill="#21262d"/>
+      <rect x="720" y="318" width="173" height="6" fill="#3fb950" class="bar" style="animation-delay:3.3s"/>
     </g>
   </g>
+
+  <!-- próximo prompt -->
+  <text x="28" y="404" class="t ln" style="animation-delay:3.6s"><tspan class="acc">adam@forge</tspan><tspan class="dim">:</tspan><tspan fill="#58a6ff">~</tspan><tspan class="dim">$ </tspan><tspan class="cursor">▌</tspan></text>
 </svg>

@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b0806"/>
+      <stop offset="1" stop-color="#1c1109"/>
+    </linearGradient>
+    <radialGradient id="heat" cx="0.2" cy="0.85" r="0.5">
+      <stop offset="0" stop-color="#ff6a00" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cold" cx="0.84" cy="0.45" r="0.35">
+      <stop offset="0" stop-color="#00ffc6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#00ffc6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1b8"/>
+      <stop offset="0.45" stop-color="#ffc24a"/>
+      <stop offset="1" stop-color="#b8661a"/>
+    </linearGradient>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0fb89a"/>
+      <stop offset="0.5" stop-color="#b9fff0"/>
+      <stop offset="1" stop-color="#0fb89a"/>
+    </linearGradient>
+    <linearGradient id="iron" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a5f66"/>
+      <stop offset="1" stop-color="#23262b"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#00ffc6" stroke-opacity="0.05"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font: 700 58px Georgia, 'Times New Roman', serif; letter-spacing: 8px; }
+    .sub   { font: 600 17px 'Fira Code', 'Courier New', monospace; letter-spacing: 6px; }
+    .tag   { font: 500 13px 'Fira Code', 'Courier New', monospace; letter-spacing: 2px; }
+    .rune  { font: 700 16px 'Segoe UI Symbol', 'DejaVu Sans', serif; }
+
+    .pulse { animation: pulse 3s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: .75 } 50% { opacity: 1 } }
+
+    .hammer { transform-origin: 262px 152px; transform-box: view-box; animation: strike 1.8s ease-in infinite; }
+    @keyframes strike {
+      0%   { transform: rotate(-38deg) }
+      62%  { transform: rotate(-48deg) }
+      78%  { transform: rotate(0deg) }
+      86%  { transform: rotate(-6deg) }
+      100% { transform: rotate(-38deg) }
+    }
+
+    .spark { opacity: 0; animation: 1.8s ease-out infinite; }
+    .s1 { animation-name: s1 } .s2 { animation-name: s2 } .s3 { animation-name: s3 }
+    .s4 { animation-name: s4 } .s5 { animation-name: s5 } .s6 { animation-name: s6 }
+    @keyframes s1 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(-55px,-48px)} }
+    @keyframes s2 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(-30px,-70px)} }
+    @keyframes s3 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(10px,-78px)} }
+    @keyframes s4 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(45px,-55px)} }
+    @keyframes s5 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(-70px,-15px)} }
+    @keyframes s6 { 0%,77% {opacity:0; transform:translate(0,0)} 78% {opacity:1} 100% {opacity:0; transform:translate(62px,-22px)} }
+
+    .flash { opacity: 0; animation: flash 1.8s ease-out infinite; }
+    @keyframes flash { 0%,77% {opacity:0} 79% {opacity:.9} 100% {opacity:0} }
+
+    .ember { animation: rise linear infinite; opacity: 0; }
+    @keyframes rise {
+      0%   { transform: translateY(0); opacity: 0 }
+      15%  { opacity: 1 }
+      100% { transform: translateY(-300px); opacity: 0 }
+    }
+
+    .sword { animation: hover 4s ease-in-out infinite; }
+    @keyframes hover { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+    .bladeglow { animation: bglow 2.4s ease-in-out infinite; }
+    @keyframes bglow { 0%,100% { opacity: .35 } 50% { opacity: .9 } }
+
+    .runes text { animation: runeblink 4s ease-in-out infinite; }
+    @keyframes runeblink { 0%,100% { opacity: .15 } 50% { opacity: .9 } }
+
+    .scan { animation: scan 5s linear infinite; }
+    @keyframes scan { 0% { transform: translateX(-200px) } 100% { transform: translateX(1200px) } }
+  </style>
+
+  <!-- fundo -->
+  <rect width="1000" height="300" rx="14" fill="url(#bg)"/>
+  <rect width="1000" height="300" rx="14" fill="url(#grid)"/>
+  <rect width="1000" height="300" rx="14" fill="url(#heat)"/>
+  <rect width="1000" height="300" rx="14" fill="url(#cold)"/>
+
+  <!-- circuitos -->
+  <g fill="none" stroke="#00ffc6" stroke-opacity="0.18" stroke-width="1.5">
+    <path d="M330 40 H400 L420 60 H580 L600 40 H670"/>
+    <path d="M330 262 H420 L440 244 H560 L580 262 H670"/>
+    <circle cx="330" cy="40" r="3"/><circle cx="670" cy="40" r="3"/>
+    <circle cx="330" cy="262" r="3"/><circle cx="670" cy="262" r="3"/>
+  </g>
+  <g class="scan"><rect x="0" y="0" width="120" height="300" fill="#00ffc6" opacity="0.025"/></g>
+
+  <!-- brasas -->
+  <g fill="#ffb347">
+    <circle class="ember" cx="80"  cy="300" r="2"   style="animation-duration:6s;  animation-delay:0s"/>
+    <circle class="ember" cx="140" cy="300" r="1.5" style="animation-duration:5s;  animation-delay:1.2s"/>
+    <circle class="ember" cx="200" cy="300" r="2.5" style="animation-duration:7s;  animation-delay:2.5s"/>
+    <circle class="ember" cx="260" cy="300" r="1.5" style="animation-duration:5.5s;animation-delay:.6s"/>
+    <circle class="ember" cx="320" cy="300" r="2"   style="animation-duration:8s;  animation-delay:3.1s"/>
+    <circle class="ember" cx="400" cy="300" r="1.2" style="animation-duration:6.5s;animation-delay:1.8s"/>
+    <circle class="ember" cx="470" cy="300" r="2"   style="animation-duration:7.5s;animation-delay:4s"/>
+    <circle class="ember" cx="540" cy="300" r="1.5" style="animation-duration:6s;  animation-delay:2.2s"/>
+    <circle class="ember" cx="610" cy="300" r="2.2" style="animation-duration:8.5s;animation-delay:.3s"/>
+    <circle class="ember" cx="690" cy="300" r="1.4" style="animation-duration:5.8s;animation-delay:3.6s"/>
+    <circle class="ember" cx="760" cy="300" r="2"   style="animation-duration:7s;  animation-delay:1s"/>
+    <circle class="ember" cx="890" cy="300" r="1.6" style="animation-duration:6.2s;animation-delay:2.8s"/>
+    <circle class="ember" cx="950" cy="300" r="2"   style="animation-duration:7.8s;animation-delay:4.4s"/>
+  </g>
+
+  <!-- bigorna -->
+  <g>
+    <ellipse cx="180" cy="252" rx="95" ry="8" fill="#000" opacity="0.5"/>
+    <path d="M112 168 H252 Q262 168 262 178 L234 190 Q214 196 212 208 L218 226 H238 V246 H122 V226 H142 L148 208 Q146 196 126 190 L78 180 Q70 170 112 168 Z"
+          fill="url(#iron)" stroke="#0e0f11" stroke-width="2"/>
+    <path d="M112 170 H252" stroke="#9aa3ad" stroke-width="2" opacity="0.7"/>
+    <!-- lâmina incandescente sobre a bigorna -->
+    <rect x="130" y="160" width="92" height="8" rx="3" fill="#ff7a1a" filter="url(#softglow)" class="pulse"/>
+  </g>
+  <circle class="flash" cx="175" cy="164" r="26" fill="#ffd27a" filter="url(#glow)"/>
+  <g fill="#ffd27a" filter="url(#softglow)">
+    <circle class="spark s1" cx="175" cy="162" r="2.5"/>
+    <circle class="spark s2" cx="175" cy="162" r="2"/>
+    <circle class="spark s3" cx="175" cy="162" r="2.5"/>
+    <circle class="spark s4" cx="175" cy="162" r="2"/>
+    <circle class="spark s5" cx="175" cy="162" r="1.8"/>
+    <circle class="spark s6" cx="175" cy="162" r="2.2"/>
+  </g>
+
+  <!-- martelo -->
+  <g class="hammer">
+    <rect x="186" y="148" width="80" height="8" rx="3" fill="#7a4a24" stroke="#3b2210"/>
+    <rect x="150" y="136" width="40" height="24" rx="3" fill="url(#iron)" stroke="#0e0f11" stroke-width="2"/>
+    <rect x="150" y="136" width="40" height="5" rx="2" fill="#9aa3ad" opacity="0.6"/>
+  </g>
+
+  <!-- título -->
+  <g text-anchor="middle">
+    <text x="500" y="128" class="title" fill="url(#gold)" filter="url(#softglow)">ADAM CALDAS</text>
+    <text x="500" y="168" class="sub pulse" fill="#00ffc6">⚒ FORJADOR DE SISTEMAS ⚒</text>
+    <text x="500" y="204" class="tag" fill="#c9a877">Full Stack · Go · TypeScript · Boa Vista, RR</text>
+  </g>
+  <g class="runes" text-anchor="middle" fill="#00ffc6">
+    <text x="360" y="130" class="rune" style="animation-delay:0s">ᚠ</text>
+    <text x="640" y="130" class="rune" style="animation-delay:2s">ᚱ</text>
+    <text x="380" y="210" class="rune" style="animation-delay:1s">ᛟ</text>
+    <text x="620" y="210" class="rune" style="animation-delay:3s">ᛉ</text>
+  </g>
+
+  <!-- espada rúnica -->
+  <g class="sword">
+    <ellipse cx="840" cy="150" rx="28" ry="110" fill="#00ffc6" class="bladeglow" filter="url(#glow)" opacity="0.4"/>
+    <path d="M828 222 V70 L840 42 L852 70 V222 Z" fill="url(#blade)" stroke="#e8fff9" stroke-width="1.5"/>
+    <path d="M840 50 V218" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1"/>
+    <g fill="#0b3b33" font-family="'Segoe UI Symbol','DejaVu Sans',serif" font-size="11" text-anchor="middle">
+      <text x="840" y="95">ᚨ</text><text x="840" y="125">ᛞ</text><text x="840" y="155">ᚨ</text><text x="840" y="185">ᛗ</text>
+    </g>
+    <rect x="800" y="222" width="80" height="12" rx="4" fill="url(#gold)" stroke="#6b3a10"/>
+    <rect x="833" y="234" width="14" height="36" rx="3" fill="#5a3418" stroke="#2c170a"/>
+    <circle cx="840" cy="276" r="9" fill="url(#gold)" stroke="#6b3a10"/>
+    <circle cx="840" cy="276" r="3.5" fill="#00ffc6" class="pulse"/>
+  </g>
+
+  <rect x="1.5" y="1.5" width="997" height="297" rx="13" fill="none" stroke="#b8661a" stroke-opacity="0.55" stroke-width="2"/>
+</svg>

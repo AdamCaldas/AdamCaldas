@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 40" width="1000" height="40">
+  <defs>
+    <linearGradient id="line" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="960" y2="0">
+      <stop offset="0" stop-color="#b8661a" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffc24a"/>
+      <stop offset="1" stop-color="#b8661a" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    .spark { animation: run 4s ease-in-out infinite; }
+    .spark.r { animation-direction: reverse; }
+    @keyframes run { 0% { transform: translateX(60px); opacity: 0 } 15%,85% { opacity: 1 } 100% { transform: translateX(440px); opacity: 0 } }
+    .gem { transform-box: fill-box; transform-origin: center; animation: spin 6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg) } }
+    .core { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: .5 } 50% { opacity: 1 } }
+  </style>
+  <path d="M40 20 H470 M530 20 H960" stroke="url(#line)" stroke-width="2"/>
+  <circle class="spark" cx="0" cy="20" r="3" fill="#ffd27a" filter="url(#glow)"/>
+  <circle class="spark r" cx="500" cy="20" r="3" fill="#00ffc6" filter="url(#glow)"/>
+  <rect class="gem" x="488" y="8" width="24" height="24" fill="none" stroke="#ffc24a" stroke-width="2" transform="rotate(45 500 20)"/>
+  <circle class="core" cx="500" cy="20" r="6" fill="#00ffc6" filter="url(#glow)"/>
+</svg>
